@@ -22,6 +22,11 @@ public class TiendaController {
 
     }
 
+    /**
+     * Retorna la tienda con ID dado
+     * @param idTienda  ID de la tienda
+     * @return La tienda con ID dado
+     */
     @GetMapping("/{idTienda}")
     public ResponseEntity<Tienda> getTiendaId(@PathVariable Integer idTienda) {
 
