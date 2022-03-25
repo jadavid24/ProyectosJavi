@@ -1,9 +1,13 @@
 package com.example.test.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Setter
 @Table(name = "tienda",  schema = "vex")
