@@ -1,29 +1,18 @@
-package com.example.test.model;
+package com.example.test.controller.model;
 
-import lombok.Setter;
+import javax.validation.constraints.NotNull;
 
-import javax.persistence.*;
-
-@Entity
-@Setter
-@Table(name = "tienda",  schema = "vex")
-public class Tienda{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id_tienda")
+public class TiendaDto {
     private Integer idTienda;
-
-    @Column(name = "nombre_tienda")
+    @NotNull(message = "Debes especificar la existencia")
     private String nombreTienda;
-
-    @Column(name = "ciudad")
+    @NotNull
     private String ciudad;
-
-    @Column(name = "direccion")
+    @NotNull
     private String direccion;
 
-    public Tienda (String nombreTienda,String ciudad,String direccion){
+    public TiendaDto(Integer idTienda, String nombreTienda, String ciudad, String direccion){
+        this.idTienda=idTienda;
         this.nombreTienda = nombreTienda;
         this.ciudad = ciudad;
         this.direccion = direccion;
@@ -45,4 +34,3 @@ public class Tienda{
         return direccion;
     }
 }
-

@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+import com.example.test.controller.model.TiendaDto;
 import com.example.test.model.Tienda;
 import com.example.test.service.TiendaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,29 +16,25 @@ public class TiendaController {
     @Autowired
     private TiendaService tiendaService;
 
+
     @GetMapping()
     public ResponseEntity<List<Tienda>> getTiendas(String ciudad) {
+
         List<Tienda> tiendas = tiendaService.getTiendas(ciudad);
         return ResponseEntity.ok(tiendas);
-
     }
 
-    /**
-     * Retorna la tienda con ID dado
-     * @param idTienda  ID de la tienda
-     * @return La tienda con ID dado
-     */
     @GetMapping("/{idTienda}")
-    public ResponseEntity<Tienda> getTiendaId(@PathVariable Integer idTienda) {
-
-        Tienda tienda = tiendaService.getTiendaId(idTienda);
+    public ResponseEntity<TiendaDto> getTiendaId(@PathVariable Integer idTienda) {
+        TiendaDto tienda = tiendaService.getTiendaId(idTienda);
         return ResponseEntity.ok(tienda);
     }
 
     @PostMapping()
-    public ResponseEntity<Tienda> createTienda(@RequestBody Tienda nuevaTienda) {
-        Tienda tienda = tiendaService.createTienda(nuevaTienda);
+    public ResponseEntity<TiendaDto> createTienda(@RequestBody TiendaDto nuevaTienda) {
+        TiendaDto tienda = tiendaService.createTienda(nuevaTienda);
         return ResponseEntity.ok(tienda);
+
     }
 
     @DeleteMapping("/{idTienda}")
