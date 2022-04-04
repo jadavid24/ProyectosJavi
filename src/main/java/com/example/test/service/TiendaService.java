@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface TiendaService {
 
-    List<Tienda> getTiendas(String ciudad);
+    List<TiendaDto> getTiendas(String ciudad);
 
     TiendaDto getTiendaId (Integer idTienda);
 
     TiendaDto createTienda (TiendaDto tienda);
 
-    Tienda deleteTienda (Integer idTienda);
+    TiendaDto deleteTienda (Integer idTienda);
 }
 
 

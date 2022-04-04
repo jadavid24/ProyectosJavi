@@ -1,7 +1,6 @@
 package com.example.test.controller;
 
 import com.example.test.controller.model.TiendaDto;
-import com.example.test.model.Tienda;
 import com.example.test.service.TiendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +17,9 @@ public class TiendaController {
 
 
     @GetMapping()
-    public ResponseEntity<List<Tienda>> getTiendas(String ciudad) {
+    public ResponseEntity<List<TiendaDto>> getTiendas(String ciudad) {
 
-        List<Tienda> tiendas = tiendaService.getTiendas(ciudad);
+        List<TiendaDto> tiendas = tiendaService.getTiendas(ciudad);
         return ResponseEntity.ok(tiendas);
     }
 
@@ -38,8 +37,8 @@ public class TiendaController {
     }
 
     @DeleteMapping("/{idTienda}")
-    public ResponseEntity<Tienda> deleteTienda(@PathVariable Integer idTienda) {
-        Tienda tienda = tiendaService.deleteTienda(idTienda);
+    public ResponseEntity<TiendaDto> deleteTienda(@PathVariable Integer idTienda) {
+        TiendaDto tienda = tiendaService.deleteTienda(idTienda);
         return ResponseEntity.ok(tienda);
     }
 }

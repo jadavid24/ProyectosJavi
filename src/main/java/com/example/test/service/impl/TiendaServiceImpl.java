@@ -7,6 +7,7 @@ import com.example.test.service.TiendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,12 +17,22 @@ public class TiendaServiceImpl implements TiendaService {
     private TiendaRepository tiendaRepository;
 
     @Override
-    public List<Tienda> getTiendas(String ciudad) {
+    public List<TiendaDto> getTiendas(String ciudad) {
 
+        List<Tienda> tiendas;
         if(ciudad != null){
-            return tiendaRepository.getTiendasByCiudad(ciudad);
+            tiendas = tiendaRepository.getTiendasByCiudad(ciudad);
+        }else{
+            tiendas = tiendaRepository.findAll();
         }
-        return tiendaRepository.findAll();
+
+        List<TiendaDto> tiendasDto = new ArrayList<>();
+        for (Tienda tienda:tiendas) {
+
+            TiendaDto tiendaDto = new TiendaDto(tienda.getIdTienda(),tienda.getNombreTienda(),tienda.getCiudad(),tienda.getDireccion());
+            tiendasDto.add(tiendaDto);
+        }
+        return tiendasDto;
     }
 
     @Override
@@ -40,17 +51,16 @@ public class TiendaServiceImpl implements TiendaService {
 
         Tienda nuevaTienda = new Tienda(tienda.getNombreTienda(),tienda.getCiudad(),tienda.getDireccion());
         Tienda a = tiendaRepository.saveAndFlush(nuevaTienda);
-        TiendaDto m = new TiendaDto(a.getIdTienda(),a.getNombreTienda(),a.getCiudad(),a.getDireccion());
-        return m;
+        return new TiendaDto(a.getIdTienda(),a.getNombreTienda(),a.getCiudad(),a.getDireccion());
     }
 
     @Override
-    public Tienda deleteTienda(Integer idTienda) {
+    public TiendaDto deleteTienda(Integer idTienda) {
 
-        if (idTienda != null) {
+        TiendaDto tienda = getTiendaId(idTienda);
+        if (tienda != null) {
             tiendaRepository.deleteById(idTienda);
         }
-        return null;
+        return tienda;
     }
 }
-//tiendaRepository.findById()
