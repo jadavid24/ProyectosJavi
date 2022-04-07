@@ -47,6 +47,25 @@ public class TiendaServiceImpl implements TiendaService {
     }
 
     @Override
+    public TiendaDto updateTienda (TiendaDto cambioTienda,Integer idTienda){
+
+        Tienda tienda = tiendaRepository.findById(idTienda).orElse(null);
+        if (tienda != null){
+
+            tienda.setNombreTienda(cambioTienda.getNombreTienda());
+            tienda.setCiudad(cambioTienda.getCiudad());
+            tienda.setDireccion(cambioTienda.getDireccion());
+            Tienda actualizada = tiendaRepository.save(tienda);
+            return new TiendaDto(actualizada.getIdTienda(),actualizada.getNombreTienda(),actualizada.getCiudad(),actualizada.getDireccion());
+        }
+
+        else {
+            return null;
+        }
+
+    }
+
+    @Override
     public TiendaDto createTienda(TiendaDto tienda) {
 
         Tienda nuevaTienda = new Tienda(tienda.getNombreTienda(),tienda.getCiudad(),tienda.getDireccion());

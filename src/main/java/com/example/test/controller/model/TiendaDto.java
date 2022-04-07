@@ -11,8 +11,8 @@ public class TiendaDto {
     @NotNull
     private String direccion;
 
-    public TiendaDto(Integer idTienda, String nombreTienda, String ciudad, String direccion){
-        this.idTienda=idTienda;
+    public TiendaDto(Integer idTienda, String nombreTienda, String ciudad, String direccion) {
+        this.idTienda = idTienda;
         this.nombreTienda = nombreTienda;
         this.ciudad = ciudad;
         this.direccion = direccion;
@@ -33,4 +33,7 @@ public class TiendaDto {
     public String getDireccion() {
         return direccion;
     }
+
 }
+
+

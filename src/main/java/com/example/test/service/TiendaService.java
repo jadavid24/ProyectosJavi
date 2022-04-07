@@ -1,7 +1,6 @@
 package com.example.test.service;
 
 import com.example.test.controller.model.TiendaDto;
-import com.example.test.model.Tienda;
 
 import java.util.List;
 
@@ -11,9 +10,13 @@ public interface TiendaService {
 
     TiendaDto getTiendaId (Integer idTienda);
 
+    TiendaDto updateTienda (TiendaDto cambioTienda,Integer idTienda);
+
     TiendaDto createTienda (TiendaDto tienda);
 
     TiendaDto deleteTienda (Integer idTienda);
+
+
 }
 
 
