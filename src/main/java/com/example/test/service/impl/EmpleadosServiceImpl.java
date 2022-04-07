@@ -17,7 +17,7 @@ public class EmpleadosServiceImpl implements EmpleadoService {
     private EmpleadoRepository empleadoRepository;
 
     @Override
-    public List<EmpleadoDto> getEmpleados(Integer idTienda) {
+    public List<EmpleadoDto> getEmpleados(final Integer idTienda) {
 
         List<Empleados> empleados;
         if(idTienda != null){
