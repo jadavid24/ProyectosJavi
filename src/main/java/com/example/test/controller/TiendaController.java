@@ -29,11 +29,16 @@ public class TiendaController {
         return ResponseEntity.ok(tienda);
     }
 
+    @PutMapping("/{idTienda}")
+    public ResponseEntity<TiendaDto> updateTienda(@RequestBody TiendaDto cambioTienda, @PathVariable Integer idTienda){
+        TiendaDto tienda = tiendaService.updateTienda(cambioTienda,idTienda);
+        return ResponseEntity.ok(tienda);
+    }
+
     @PostMapping()
     public ResponseEntity<TiendaDto> createTienda(@RequestBody TiendaDto nuevaTienda) {
         TiendaDto tienda = tiendaService.createTienda(nuevaTienda);
         return ResponseEntity.ok(tienda);
-
     }
 
     @DeleteMapping("/{idTienda}")
@@ -44,5 +49,5 @@ public class TiendaController {
 }
 
 
-
+//CRUD: CREATE, READ, UPDATE, DELETE
 
