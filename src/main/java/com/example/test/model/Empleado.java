@@ -49,4 +49,9 @@ public class Empleado {
         this.salario = salario;
         this.tienda = tienda;
     }
+
+    public Empleado(String cargo) {
+        this.cargo = cargo;
+    }
+
 }
