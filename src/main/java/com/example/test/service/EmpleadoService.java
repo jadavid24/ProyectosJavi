@@ -8,11 +8,11 @@ public interface EmpleadoService {
 
     List<EmpleadoDto> getEmpleados(Integer idTienda);
 
-    EmpleadoDto getEmpleadoId (Integer idEmpleado);
+    EmpleadoDto getEmpleadoId (Integer idTienda, Integer idEmpleado);
 
     EmpleadoDto updateEmpleados (EmpleadoDto cambioEmpleado, Integer idEmpleado);
 
-    EmpleadoDto createEmpleado (EmpleadoDto empleado);
+    EmpleadoDto createEmpleado (Integer idTienda, EmpleadoDto nuevoEmpleado);
 
     EmpleadoDto deleteEmpleado (Integer idEmpleado);
 }

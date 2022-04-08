@@ -40,7 +40,7 @@ public class Tienda{
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "tienda")
-    private List<Empleados> empleados;
+    private List<Empleado> empleados;
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "tienda")

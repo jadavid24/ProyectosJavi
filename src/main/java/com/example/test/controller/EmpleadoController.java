@@ -17,31 +17,31 @@ public class EmpleadoController {
     private EmpleadoService empleadoService;
 
     @GetMapping("tiendas/{idTienda}/empleados")
-    public ResponseEntity<List<EmpleadoDto>> getEmpleados(Integer idTienda) {
+    public ResponseEntity<List<EmpleadoDto>> getEmpleados(@PathVariable Integer idTienda) {
 
         List<EmpleadoDto> empleados = empleadoService.getEmpleados(idTienda);
         return ResponseEntity.ok(empleados);
     }
 
-    @GetMapping("/{idEmpleado}")
-    public ResponseEntity<EmpleadoDto> getEmpleadoId (@PathVariable Integer idEmpleado) {
-        EmpleadoDto empleado = empleadoService.getEmpleadoId(idEmpleado);
+    @GetMapping("tiendas/{idTienda}/empleados/{idEmpleado}")
+    public ResponseEntity<EmpleadoDto> getEmpleadoId (@PathVariable Integer idTienda, @PathVariable Integer idEmpleado) {
+        EmpleadoDto empleado = empleadoService.getEmpleadoId(idTienda, idEmpleado);
         return ResponseEntity.ok(empleado);
     }
 
-    @PutMapping("/{idEmpleado}")
+    @PutMapping("tiendas/idTienda/empleados/{idEmpleado}")
     public ResponseEntity<EmpleadoDto> updateEmpleado (@RequestBody EmpleadoDto cambioEmpleado, @PathVariable Integer idEmpleado){
         EmpleadoDto empleado = empleadoService.updateEmpleados(cambioEmpleado,idEmpleado);
         return ResponseEntity.ok(empleado);
     }
 
-    @PostMapping()
-    public ResponseEntity<EmpleadoDto> createTienda(@RequestBody EmpleadoDto nuevoEmpleado) {
-        EmpleadoDto empleado = empleadoService.createEmpleado(nuevoEmpleado);
+    @PostMapping("tiendas/{idTienda}/empleados")
+    public ResponseEntity<EmpleadoDto> createTienda(@PathVariable Integer idTienda,@RequestBody EmpleadoDto nuevoEmpleado) {
+        EmpleadoDto empleado = empleadoService.createEmpleado(idTienda,nuevoEmpleado);
         return ResponseEntity.ok(empleado);
     }
 
-    @DeleteMapping("/{idEmpleado}")
+    @DeleteMapping("tiendas/{idTienda}/empleados/{idEmpleado}")
     public ResponseEntity<EmpleadoDto> deleteTienda(@PathVariable Integer idEmpleado) {
         EmpleadoDto empleado = empleadoService.deleteEmpleado(idEmpleado);
         return ResponseEntity.ok(empleado);

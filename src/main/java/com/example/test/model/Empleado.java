@@ -16,17 +16,12 @@ import javax.persistence.*;
 @Getter
 @Table(name = "empleados",  schema = "vex")
 
-public class Empleados {
+public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_empleado")
     private Integer idEmpleado;
-
-    @JsonBackReference
-    @ManyToOne()
-    @JoinColumn(name = "id_tienda")
-    private Tienda tienda;
 
     @Column(name = "nombre")
     private String nombre;
@@ -36,4 +31,22 @@ public class Empleados {
 
     @Column(name = "salario")
     private Double salario;
+
+    @JsonBackReference
+    @ManyToOne()
+    @JoinColumn(name = "id_tienda")
+    private Tienda tienda;
+
+    public Empleado (String nombre, String cargo,Double salario){
+        this.nombre = nombre;
+        this.cargo = cargo;
+        this.salario = salario;
+    }
+
+    public Empleado(String nombreEmpleado, String cargo, Double salario, Tienda tienda) {
+        this.nombre = nombreEmpleado;
+        this.cargo = cargo;
+        this.salario = salario;
+        this.tienda = tienda;
+    }
 }
