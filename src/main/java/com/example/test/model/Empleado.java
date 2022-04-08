@@ -42,16 +42,4 @@ public class Empleado {
         this.cargo = cargo;
         this.salario = salario;
     }
-
-    public Empleado(String nombreEmpleado, String cargo, Double salario, Tienda tienda) {
-        this.nombre = nombreEmpleado;
-        this.cargo = cargo;
-        this.salario = salario;
-        this.tienda = tienda;
-    }
-
-    public Empleado(String cargo) {
-        this.cargo = cargo;
-    }
-
 }
